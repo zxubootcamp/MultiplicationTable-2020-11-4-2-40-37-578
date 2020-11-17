@@ -12,8 +12,8 @@ export class MultiplicationTable {
     const content = this.generateMultipleTableContent(start, end)
 
     let multiplicationTable = `${content[0][0].factor1}*${content[0][0].factor2}=${content[0][0].product}\n`
-    for (let indexRow = 0; indexRow < content.length; indexRow++) {
-      for (let indexColumn = 1; indexColumn < content[indexRow].length; indexColumn++) {
+    for (let indexRow = 1; indexRow < content.length; indexRow++) {
+      for (let indexColumn = 0; indexColumn < content[indexRow].length; indexColumn++) {
         if (indexColumn < content[indexRow].length - 1) {
           multiplicationTable += `${content[indexRow][indexColumn].factor1}*${content[indexRow][indexColumn].factor2}=${content[indexRow][indexColumn].product}  `
         }
