@@ -10,18 +10,29 @@ export class MultiplicationTable {
     }
 
     const content = this.generateMultipleTableContent(start, end)
+    const pivot = new Array<number>()
+    const lastRow = content[content.length - 1]
+    pivot.push(0)
+    for (let index = 0; index < lastRow.length - 1; index++) {
+      pivot.push(pivot[index] + `${lastRow[index].factor1}*${lastRow[index].factor2}=${lastRow[index].product}`.length + 2)
+    }
 
     let multiplicationTable = `${content[0][0].factor1}*${content[0][0].factor2}=${content[0][0].product}\n`
+    let lastRowLength = multiplicationTable.length
     for (let indexRow = 1; indexRow < content.length; indexRow++) {
       for (let indexColumn = 0; indexColumn < content[indexRow].length; indexColumn++) {
+        const text = `${content[indexRow][indexColumn].factor1}*${content[indexRow][indexColumn].factor2}=${content[indexRow][indexColumn].product}`
         if (indexColumn < content[indexRow].length - 1) {
-          multiplicationTable += `${content[indexRow][indexColumn].factor1}*${content[indexRow][indexColumn].factor2}=${content[indexRow][indexColumn].product}  `
+          multiplicationTable += text
+          multiplicationTable = multiplicationTable.padEnd(lastRowLength + pivot[indexColumn + 1], ' ')
         }
         else {
-          multiplicationTable += `${content[indexRow][indexColumn].factor1}*${content[indexRow][indexColumn].factor2}=${content[indexRow][indexColumn].product}\n`
+          multiplicationTable += text + '\n'
         }
       }
+      lastRowLength = multiplicationTable.length
     }
+
     return multiplicationTable.toString()
   }
 
@@ -52,3 +63,6 @@ export class Expression {
     this.product = factor1 * factor2
   }
 }
+
+// let test = new MultiplicationTable();
+// test.render(8, 10)
