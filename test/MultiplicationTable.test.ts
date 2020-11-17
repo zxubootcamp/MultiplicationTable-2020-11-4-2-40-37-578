@@ -27,16 +27,16 @@ describe('Multiplication Table', () => {
     expect(rendered).toBe("")
   })
 
-  // it('should render multiplication table of (1, 1)', () => {
-  //   // given
-  //   const table = new MultiplicationTable()
-  //   const start = 8
-  //   const end = 10
+  it('should render error message of (0, 11)', () => {
+    // given
+    const table = new MultiplicationTable()
+    const start = 0
+    const end = 11
 
-  //   //when
-  //   const rendered = table.render(start, end)
+    //when
+    const rendered = table.render(start, end)
 
-  //   //then
-  //   expect(rendered).toBe(`8*8=64\n` + `8*9=72   9*9=81\n` + `8*10=90  9*10=90  10*10=100`)
-  // })
+    //then
+    expect(rendered).toBe('The start number and the end number should be any integer in a range of 1 to 10 (inclusive).')
+  })
 })

@@ -2,14 +2,21 @@ import { resourceLimits } from 'worker_threads'
 
 export class MultiplicationTable {
   public render(start: number, end: number): string {
-    if (!this.validateInputNumbers(start, end)) {
+    if (!this.validateInputOrder(start, end)) {
       return ""
+    }
+    if (!this.validateInputRange(start, end)) {
+      return "The start number and the end number should be any integer in a range of 1 to 10 (inclusive)."
     }
     return '1*1=1'
   }
 
-  private validateInputNumbers(start: number, end: number): boolean {
+  private validateInputOrder(start: number, end: number): boolean {
     return start <= end
+  }
+
+  private validateInputRange(start: number, end: number): boolean {
+    return start > 0 && start <= 10 && end > 0 && end <= 10
   }
 
   public generateMultipleTable(start: number, end: number): Array<Array<Expression>> {
@@ -17,7 +24,7 @@ export class MultiplicationTable {
     const side = end - start + 1
     for (let indexRow = 0; indexRow < side; indexRow++) {
       result.push(new Array<Expression>())
-      for (let indexColumn = 0; indexColumn < side; indexColumn++) {
+      for (let indexColumn = 0; indexColumn < indexRow; indexColumn++) {
         result[indexRow].push(new Expression(start + indexColumn, start + indexRow))
       }
     }
@@ -31,6 +38,3 @@ export class Expression {
     this.product = factor1 * factor2
   }
 }
-
-// result[indexRow].push(`${numbers[0] + indexRow} * ${numbers[0] + indexRow + indexColumn}`);
-// when是指测的函数
