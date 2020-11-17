@@ -1,4 +1,4 @@
-import { MultiplicationTable } from '../src/MultiplicationTable'
+import { MultiplicationTable } from '../build/src/MultiplicationTable'
 
 describe('Multiplication Table', () => {
   it('should render multiplication table of (1, 1)', () => {
@@ -11,7 +11,7 @@ describe('Multiplication Table', () => {
     const rendered = table.render(start, end)
 
     //then
-    expect(rendered).toBe('1*1=1')
+    expect(rendered).toBe('1*1=1\n')
   })
 
   it('should render null of (2, 1)', () => {
@@ -38,5 +38,18 @@ describe('Multiplication Table', () => {
 
     //then
     expect(rendered).toBe('The start number and the end number should be any integer in a range of 1 to 10 (inclusive).')
+  })
+
+  it('should render multiplication table of (2, 4)', () => {
+    // given
+    const table = new MultiplicationTable()
+    const start = 2
+    const end = 4
+
+    //when
+    const rendered = table.render(start, end)
+
+    //then
+    expect(rendered).toBe(`2*2=4\n2*3=6  3*3=9\n2*4=8  3*4=12  4*4=16\n`)
   })
 })
