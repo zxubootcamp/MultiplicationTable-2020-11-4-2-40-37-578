@@ -11,7 +11,7 @@ describe('Multiplication Table', () => {
     const rendered = table.render(start, end)
 
     //then
-    expect(rendered).toBe('1*1=1\n')
+    expect(rendered).toBe('1*1=1')
   })
 
   it('should render null of (2, 1)', () => {
@@ -50,7 +50,7 @@ describe('Multiplication Table', () => {
     const rendered = table.render(start, end)
 
     //then
-    expect(rendered).toBe('2*2=4\n2*3=6  3*3=9\n2*4=8  3*4=12  4*4=16\n')
+    expect(rendered).toBe('2*2=4\n2*3=6  3*3=9\n2*4=8  3*4=12  4*4=16')
   })
 
   it('should render multiplication table of (8, 10)', () => {
@@ -63,6 +63,6 @@ describe('Multiplication Table', () => {
     const rendered = table.render(start, end)
 
     //then
-    expect(rendered).toBe('8*8=64\n8*9=72   9*9=81\n8*10=80  9*10=90  10*10=100\n')
+    expect(rendered).toBe('8*8=64\n8*9=72   9*9=81\n8*10=80  9*10=90  10*10=100')
   })
 })
