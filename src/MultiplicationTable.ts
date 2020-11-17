@@ -18,19 +18,17 @@ export class MultiplicationTable {
     }
 
     let multiplicationTable = `${content[0][0].factor1}*${content[0][0].factor2}=${content[0][0].product}\n`
-    let lastRowLength = multiplicationTable.length
     for (let indexRow = 1; indexRow < content.length; indexRow++) {
       for (let indexColumn = 0; indexColumn < content[indexRow].length; indexColumn++) {
         const text = `${content[indexRow][indexColumn].factor1}*${content[indexRow][indexColumn].factor2}=${content[indexRow][indexColumn].product}`
         if (indexColumn < content[indexRow].length - 1) {
           multiplicationTable += text
-          multiplicationTable = multiplicationTable.padEnd(lastRowLength + pivot[indexColumn + 1], ' ')
+          multiplicationTable = multiplicationTable.padEnd(multiplicationTable.length + pivot[indexColumn + 1], ' ')
         }
         else {
           multiplicationTable += text + '\n'
         }
       }
-      lastRowLength = multiplicationTable.length
     }
 
     return multiplicationTable.toString()
@@ -63,6 +61,3 @@ export class Expression {
     this.product = factor1 * factor2
   }
 }
-
-// let test = new MultiplicationTable();
-// test.render(8, 10)
